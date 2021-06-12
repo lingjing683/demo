@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ExcelMapper">
+    <insert id="SaveWorkOrderWorkProcedure" parameterType="java.util.List">
+        INSERT INTO product_workorderworkprocedure_tb (workOrderNo,workProcedureName,workProcedureType,comment) VALUES
+        <foreach collection="item" index="index" separator="," item="item">
+            (#{item.workOrderNo},#{item.workProcedureName},#{item.workProcedureType},#{item.comment})
+        </foreach>
+    </insert>
+
+    <select id="getAllWorkOrderWorkProcedure" resultType="com.example.demo.model.WorkOrderWorkProcedure">
+        SELECT workOrderNo,workProcedureName,workProcedureType,comment FROM product_workorderworkprocedure_tb
+    </select>
+
+</mapper>
